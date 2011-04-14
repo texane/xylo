@@ -24,8 +24,9 @@ static inline double compute_length(double f)
    */
 
   const double v = 3700;
-  const double k = sqrt(0.004 * 0.004 + 0.0045 * 0.0045) / 2.f;
-/*   const double k = sqrt(0.008 * 0.008 + 0.007 * 0.007) / 2.f; */
+  const double k = sqrt(0.004 * 0.004 + 0.005 * 0.005) / 2.f;
+  /* const double k = sqrt(0.004 * 0.004 + 0.0045 * 0.0045) / 2.f; */
+  /* const double k = sqrt(0.008 * 0.008 + 0.007 * 0.007) / 2.f; */
   const double m[] = { 3.0112, 5, 7, 9, 11, 13, 15, 17 };
   const double mm = m[0] * m[0];
   return sqrt((M_PI * v * k * mm) / (8.f * f));
