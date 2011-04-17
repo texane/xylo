@@ -65,7 +65,7 @@ int main(int ac, char** av)
   unsigned int i;
   double nodes[2];
 
-  compute_frequencies(8, freqs);
+  compute_frequencies(7, freqs);
 
   for (i = 0; i < sizeof(notes) / sizeof(notes[0]); ++i)
   {
