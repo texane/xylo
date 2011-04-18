@@ -24,6 +24,7 @@ static inline double compute_length(double f)
    */
 
   const double v = 3700;
+  /* const double k = sqrt(0.008 * 0.008 + 0.010 * 0.010) / 4.f; */
   const double k = sqrt(0.004 * 0.004 + 0.005 * 0.005) / 2.f;
   /* const double k = sqrt(0.004 * 0.004 + 0.0045 * 0.0045) / 2.f; */
   /* const double k = sqrt(0.008 * 0.008 + 0.007 * 0.007) / 2.f; */
@@ -80,6 +81,12 @@ int main(int ac, char** av)
 
     printf("%lf %lf %lf %lf\n", freqs[notes[i]], l, nodes[0], nodes[1]);
   }
+
+  /* next mode DO note */
+  compute_frequencies(8, freqs);
+  const double l = compute_length(freqs[notes[0]]);
+  compute_antinodes(l, &nodes[0], &nodes[1]);
+  printf("%lf %lf %lf %lf\n", freqs[notes[0]], l, nodes[0], nodes[1]);
 
   return 0;
 }
