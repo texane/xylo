@@ -8,7 +8,7 @@
 
 
 %%
-\title{Xylophone Project}
+\title{Vibraphone Project}
 
 \author{Fabien Le Mentec\\
 \small \texttt{texane@gmail.com}
@@ -22,8 +22,7 @@
 %%
 \newpage
 \begin{abstract}
-This document describes the building of an electromechanical xylophone.
-Copper
+This document describes the building of an electromechanical vibraphone.
 \end{abstract}
 
 %%
@@ -162,6 +161,25 @@ TODO
   \item video of xanalyzer -rate 16000
   \item recording audio files
 \end{itemize}
+
+
+%%
+\newpage
+\section{Striking elements}
+
+\subsection{Concept}
+\paragraph{} To vibrate, the pipes need to be struck by a mass. An intuitive solution
+is to use a slug driven by a small DC motor. However, having one such element by pipe
+is too complicated and not cheap enough for our design, since motors can be hard to
+find.
+\paragraph{} Another solution is to use the magnetic field produced by a current flowing
+through a solenoid to lift a mass, acting as the slug. In our design, we use the magnetic
+field of a permanent magnet as a repulsive force. This is described in the
+following picture:
+\begin{center}
+  \includegraphics[keepaspectratio=true, width=65mm]{../dia/coil/coil.jpg}\\
+  \tiny{\textit{magnetic field used to lift a permanant magnet}}
+\end{center}
 
 %%
 \newpage
