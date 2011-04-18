@@ -61,8 +61,8 @@ where:
   \item $f$ the frequency in $hz$,
   \item $n$ an integer (1, 2, 3 ...),
   \item $v$ the speed of sound in medium in $ms^{-1}$,
-  \item $l$ the length in $mm$,
-  \item $d$ the cylinder diameter in $mm$.
+  \item $l$ the length in $meters$,
+  \item $d$ the cylinder diameter in $meters$.
 \end{itemize}
 However, we found an apparently better formula in [tamhigh\_xylo]
 which accounts for the pipe radius of gyration. The nth transveral
@@ -75,7 +75,7 @@ where:
   \item $f_{n}$ the frequency in $hz$,
   \item $v$ the speed of sound in medium in $ms^{-1}$,
   \item $k$ the gyration of radius,
-  \item $l$ the length in $mm$,
+  \item $l$ the length in $meters$,
   \item $m$ a value such that:
     \begin{itemize}
       \item $m = 3.0112$ when $n = 1$,
@@ -90,8 +90,17 @@ For a tube, the radius of gyration is:
 \end{center}
 where:
 \begin{itemize}
-  \item $R$ the outter radius in $mm$.
-  \item $r$ the inner radius in $mm$,
+  \item $R$ the outter radius in $meters$.
+  \item $r$ the inner radius in $meters$,
+\end{itemize}
+Note this is equivalent to:
+\begin{center}
+  \framebox[3in][c]{$ k = \frac{1}{4} \sqrt{D^2 + d^2} $}
+\end{center}
+where:
+\begin{itemize}
+  \item $D$ the outter diameter in $meters$.
+  \item $d$ the inner diameter in $meters$,
 \end{itemize}
 The copper sound propagation speed is:
 \begin{center}
@@ -106,9 +115,9 @@ drilling and cutting tools. Thus, we ended up choosing the 8th frequency mode
   \begin{tabular}{|c|c|c|c|}
     \hline
     \textit{frequency (hz)} &
-    \textit{length (mm)} &
-    \textit{first node (mm)} &
-    \textit{second node (mm)} \\
+    \textit{length (m)} &
+    \textit{first node (m)} &
+    \textit{second node (m)} \\
     \hline
     2093.000000 & 0.141960 & 0.031799 & 0.110161 \\
     \hline
