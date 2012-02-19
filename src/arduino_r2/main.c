@@ -11,7 +11,7 @@
 static void wait_for_long(void)
 {
   unsigned char counter;
-  for (counter = 0; counter != 2; ++counter) _delay_loop_2(30000);
+  for (counter = 0; counter != 15; ++counter) _delay_loop_2(30000);
 }
 
 
@@ -35,7 +35,7 @@ enum doremi_key
   SOL,
   LA,
   SI,
-  DO_DIESE
+  DO2
 };
  
 
@@ -61,7 +61,7 @@ int main (void)
   return 0;
 }
 
-#elif 1
+#elif 1 /* doremi */
 
 int main (void)
 {
@@ -82,6 +82,52 @@ int main (void)
     wait_for_long();
   }
  
+  return 0;
+}
+
+#elif 0 /* au clair de la lune and consorts */
+
+#if 1 /* au clair de la lune */
+static const enum doremi_key part[] =
+{
+  DO, DO, DO, RE, MI, RE, DO, MI, RE, RE, DO,
+  DO, DO, DO, RE, MI, RE, DO, MI, RE, RE, DO,
+  RE, RE, RE, RE, LA, LA, RE, DO, SI, LA, SOL,
+  DO, DO, DO, RE, MI, RE, DO, MI, RE, RE, DO
+};
+#else
+static const enum doremi_key part[] =
+{
+  DO, DO, RE, MI, DO, SOL, SOL, SOL, RE, SOL,
+  SOL, FA, MI, FA, SOL,
+  SOL, RE, MI, FA, FA,
+  SOL, FA, MI, RE, DO,
+  DO, RE, MI, FA, SOL, MI, FA, SOL, MI, RE, DO 
+};
+#endif
+
+int main(void)
+{
+  const unsigned int count = sizeof(part) / sizeof(part[0]);
+  unsigned int note = 0;
+
+  /* digital output mode */
+  DDRB = 0xff;
+  DDRD = 0xff;
+
+  PORTB = 0x00;
+  PORTD = 0x00;
+
+ redo_part:
+  for (note = 0; note < count; ++note)
+  {
+    set_pins(1 << doremi_map[part[note]]);
+    wait_for_long();
+    set_pins(0x00);
+    wait_for_long();
+  }
+  goto redo_part;
+
   return 0;
 }
 
