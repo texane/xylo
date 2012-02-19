@@ -23,7 +23,7 @@ static void set_pins(unsigned char pins)
 
 
 static const unsigned char doremi_map[] =
-{ 1, 0, 7, 6, 5, 4, 3, 2 };
+{ 1, 0, 7, 6, 5, 4, 3, 2, 8 };
 
 
 enum doremi_key
@@ -35,7 +35,21 @@ enum doremi_key
   SOL,
   LA,
   SI,
-  DO2
+  DO2,
+  SILENCE,
+
+  /* missing notes */
+  LA_DIESE = LA,
+  FA_DIESE = FA,
+  SOL_DIESE = SOL,
+  RE_DIESE = RE,
+  MIB = MI,
+  SIB = SI,
+  DO_MINOR = DO,
+  FA_MINOR = FA,
+  LA_MINOR = LA,
+  SOL_MINOR = SOL,
+  RE_MINOR = RE
 };
  
 
@@ -87,70 +101,46 @@ int main (void)
 
 #elif 1 /* partitions */
 
-#if 0 /* au clair de la lune */
-static const enum doremi_key part[] =
-{
-  DO, DO, DO, RE, MI, RE, DO, MI, RE, RE, DO,
-  DO, DO, DO, RE, MI, RE, DO, MI, RE, RE, DO,
-  RE, RE, RE, RE, LA, LA, RE, DO, SI, LA, SOL,
-  DO, DO, DO, RE, MI, RE, DO, MI, RE, RE, DO
-};
-#elif 1 /* les cowboys fringants */
-static const enum doremi_key part[] =
-{
-  SI, DO, SI, DO, SI, DO, SI,
-  SI, DO, SI, DO, SI, DO, LA,
-  /* refrain */
-  FA, FA, FA, FA, MI, FA, MI, RE, DO, SI, SOL, SOL, SI, FA,
-  MI, MI, MI, MI, RE, MI, RE, DO, SI, LA, FA, FA, LA, MI, RE,
-  RE, DO, 
-  SI, DO, SI, DO, LA,
-  /* couplet */
-  FA, FA, FA, FA, MI, FA, MI, RE, DO, SI, 
-  RE, RE, RE, RE, DO, RE, MI, RE, MI, RE, DO, SI, LA, 
-  DO, DO, DO, DO, SI, DO, RE, DO, 
-  SI, DO, SI, DO, LA,
-  SI, DO, SI, DO, LA,
-  /* refrain */
-  FA, FA, FA, FA, MI, FA, MI, RE, DO, SI, SOL, SOL, SI, FA,
-  MI, MI, MI, MI, RE, MI, RE, DO, SI, LA, FA, FA, LA, MI, RE,
-  RE, DO,
-  SI, DO, SI, DO, LA,
-  /* couplet */
-  FA, FA, FA, FA, MI, FA, MI, RE, DO, SI,
-  RE, RE, RE, RE, DO, RE, MI, RE, MI, RE, DO, SI, LA,
-  DO, DO, DO, DO, SI, DO, RE, DO,
-  SI, DO, SI, DO, LA,
-  SI, DO, SI, DO, LA,
-  /* refrain */
-  FA, FA, FA, FA, MI, FA, MI, RE, DO, SI, SOL, SOL, SI, FA,
-  MI, MI, MI, MI, RE, MI, RE, DO, SI, LA, FA, FA, LA, MI, RE,
-  RE, DO, 
-  SI, DO, SI, DO, LA,
-  /* solo */
-  MI, MI, MI, MI, RE, MI, FA, MI, FA, MI, RE, DO, SI, 
-  RE, RE, RE, RE, DO, RE, MI, RE, MI, RE, DO, SI, LA, 
-  DO, DO, DO, DO, SI, DO, 
-  RE, DO,
-  SI, DO, SI, DO, LA,
-  /* couplet */
-  FA, FA, FA, FA, MI, FA, MI, RE, DO, SI,
-  RE, RE, RE, RE, DO, RE, MI, RE, MI, RE, DO, SI, LA,
-  DO, DO, DO, DO, SI, DO, RE, DO,
-  SI, DO, SI, DO, LA,
-  SI, DO, SI, DO, LA,
-  /* refrain */
-  FA, FA, FA, FA, MI, FA, MI, RE, DO, SI, SOL, SOL, SI, FA,
-  MI, MI, MI, MI, RE, MI, RE, DO, SI, LA, FA, FA, LA, MI, RE,
-  RE, DO, 
-  SI, DO, SI, DO, LA,
-
-  FA, FA, FA, FA, MI, FA, MI, RE, DO, SI, SOL, SOL, SI, FA,
-  MI, MI, MI, MI, RE, MI, RE, DO, SI, LA, FA, FA, LA, MI, RE,
-  RE, DO,
-  SI, DO, SI, DO, SI, DO, SI,
-  SI, DO, SI, DO, SI, DO, LA
-};
+#if 1
+#include "part_elise.h"
+#elif 0
+#include "part_bach2.h"
+#elif 0
+#include "part_tetris.h"
+#elif 0
+#include "part_auclairdelalune.h"
+#elif 0
+#include "part_leconpiano.h"
+#elif 0
+#include "part_couleurcafe.h"
+#elif 0
+#include "part_odejoie.h"
+#elif 0
+#include "part_foretlointaine.h"
+#elif 0
+#include "part_terriblejungle.h"
+#elif 0
+#include "part_marseillaise.h"
+#elif 0
+#include "part_bach.h"
+#elif 0
+#include "part_papanoel.h"
+#elif 0
+#include "part_frerejacques.h"
+#elif 0
+#include "part_zelda.h"
+#elif 0
+#include "part_berceusezelda.h"
+#elif 0
+#include "part_monbeausapin.h"
+#elif 0
+#include "part_choux.h"
+#elif 0
+#include "part_jinglebells.h"
+#elif 0
+#include "part_mario.h"
+#elif 0
+#include "part_cowboys.h"
 #elif 0
 static const enum doremi_key part[] =
 {

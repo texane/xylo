@@ -1,0 +1,9 @@
+static const enum doremi_key part[] =
+{
+SOL,DO,DO,DO,RE,MI,MI,MI,MI,
+RE,MI,FA,SI,RE,DO,DO,SOL,
+SOL,MI,LA,SOL,SOL,FA,FA,FA,
+FA,RE,SOL,FA,FA,MI,MI,MI,
+SOL,DO,DO,DO,RE,MI,MI,MI,
+MI,RE,MI,FA,SI,RE,DO,
+};
