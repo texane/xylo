@@ -11,7 +11,14 @@
 static void wait_for_long(void)
 {
   unsigned char counter;
-  for (counter = 0; counter != 15; ++counter) _delay_loop_2(30000);
+  for (counter = 0; counter != 20; ++counter) _delay_loop_2(30000);
+}
+
+
+static void wait_for_short(void)
+{
+  unsigned char counter;
+  for (counter = 0; counter != 5; ++counter) _delay_loop_2(30000);
 }
 
 
@@ -19,6 +26,14 @@ static void set_pins(unsigned char pins)
 {
   PORTB = (PORTB & ~0x3) | (pins & 0x3);
   PORTD = (PORTD & 0x3) | (pins & ~0x3);
+}
+
+
+static void pulse_pins(unsigned char pins)
+{
+  set_pins(pins);
+  wait_for_short();
+  set_pins(0x00);
 }
 
 
@@ -66,9 +81,7 @@ int main (void)
 
   while (1)
   {
-    set_pins(0xff);
-    wait_for_long();
-    set_pins(0x00);
+    pulse_pins(0xff);
     wait_for_long();
   }
  
@@ -90,9 +103,7 @@ int main (void)
 
   while (1)
   {
-    set_pins(1 << doremi_map[(note++) & (0x8 - 1)]);
-    wait_for_long();
-    set_pins(0x00);
+    pulse_pins(1 << doremi_map[(note++) & (0x8 - 1)]);
     wait_for_long();
   }
  
@@ -101,7 +112,7 @@ int main (void)
 
 #elif 1 /* partitions */
 
-#if 1
+#if 0
 #include "part_elise.h"
 #elif 0
 #include "part_bach2.h"
@@ -135,7 +146,7 @@ int main (void)
 #include "part_monbeausapin.h"
 #elif 0
 #include "part_choux.h"
-#elif 0
+#elif 1
 #include "part_jinglebells.h"
 #elif 0
 #include "part_mario.h"
@@ -167,9 +178,7 @@ int main(void)
  redo_part:
   for (note = 0; note < count; ++note)
   {
-    set_pins(1 << doremi_map[part[note]]);
-    wait_for_long();
-    set_pins(0x00);
+    pulse_pins(1 << doremi_map[part[note]]);
     wait_for_long();
   }
   goto redo_part;
